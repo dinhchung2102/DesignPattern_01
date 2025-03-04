@@ -1,14 +1,15 @@
 package iuh.fit;
 
-import iuh.fit.ConcreteDecorator.NhiemVuGiamDoc;
-import iuh.fit.ConcreteDecorator.NhiemVuKeToan;
-import iuh.fit.ConcreteDecorator.NhiemVuNhanVien;
-import iuh.fit.ConcreteDecorator.NhiemVuPGD;
+import iuh.fit.ConcreteStrategy.NhiemVuGiamDoc;
+import iuh.fit.ConcreteStrategy.NhiemVuKeToan;
+import iuh.fit.ConcreteStrategy.NhiemVuNhanVien;
+import iuh.fit.ConcreteStrategy.NhiemVuPGD;
 import iuh.fit.components.NVien;
 import iuh.fit.components.NhanVien;
 import iuh.fit.components.PhoGiamDoc;
 import iuh.fit.congViec.GiamDoc;
 import iuh.fit.congViec.KeToan;
+import iuh.fit.context.NhanVienStrategy;
 import iuh.fit.context.PrintCongViec;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -31,22 +32,37 @@ public class Main {
 
 
         //Decorator
-        System.out.println("Decorator");
+//        System.out.println("Decorator");
+//
+//        NhanVien nhanVien = new NVien();
+//        NhanVien giamDoc = new iuh.fit.components.GiamDoc();
+//        NhanVien phoGD = new PhoGiamDoc();
+//        NhanVien keToan = new iuh.fit.components.KeToan();
+//
+//        nhanVien = new NhiemVuNhanVien(nhanVien);
+//        giamDoc = new NhiemVuGiamDoc(giamDoc);
+//        phoGD = new NhiemVuPGD(phoGD);
+//        keToan = new NhiemVuKeToan(keToan);
+//
+//        System.out.println(nhanVien.getChucVu() + nhanVien.getNhiemVu());
+//        System.out.println(giamDoc.getChucVu() + giamDoc.getNhiemVu());
+//        System.out.println(phoGD.getChucVu() + phoGD.getNhiemVu());
+//        System.out.println(keToan.getChucVu() + keToan.getNhiemVu());
 
-        NhanVien nhanVien = new NVien();
-        NhanVien giamDoc = new iuh.fit.components.GiamDoc();
-        NhanVien phoGD = new PhoGiamDoc();
-        NhanVien keToan = new iuh.fit.components.KeToan();
 
-        nhanVien = new NhiemVuNhanVien(nhanVien);
-        giamDoc = new NhiemVuGiamDoc(giamDoc);
-        phoGD = new NhiemVuPGD(phoGD);
-        keToan = new NhiemVuKeToan(keToan);
 
-        System.out.println(nhanVien.getChucVu() + nhanVien.getNhiemVu());
-        System.out.println(giamDoc.getChucVu() + giamDoc.getNhiemVu());
-        System.out.println(phoGD.getChucVu() + phoGD.getNhiemVu());
-        System.out.println(keToan.getChucVu() + keToan.getNhiemVu());
+        //Strategy
+        NhanVienStrategy giamdoc = new NhanVienStrategy("Anh Quang", new NhiemVuGiamDoc());
+        NhanVienStrategy phoGD = new NhanVienStrategy("Chị Lan", new NhiemVuPGD());
+        NhanVienStrategy keToan = new NhanVienStrategy("Anh Minh", new NhiemVuKeToan());
+        NhanVienStrategy nhanVien = new NhanVienStrategy("Chị Mai", new NhiemVuNhanVien());
+
+        giamdoc.printNhiemVu();
+        phoGD.printNhiemVu();
+        keToan.printNhiemVu();
+        nhanVien.printNhiemVu();
+
+
 
     }
 }
