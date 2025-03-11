@@ -1,5 +1,7 @@
 package iuh.fit;
 
+import iuh.fit.Composite.Product;
+import iuh.fit.Composite.Table;
 import iuh.fit.ConcreteStrategy.NhiemVuGiamDoc;
 import iuh.fit.ConcreteStrategy.NhiemVuKeToan;
 import iuh.fit.ConcreteStrategy.NhiemVuNhanVien;
@@ -62,6 +64,21 @@ public class Main {
         keToan.printNhiemVu();
         nhanVien.printNhiemVu();
 
+
+        Product coffee = new Product("Cà phê", 2.5);
+        Product tea = new Product("Trà", 1.5);
+        Product water = new Product("Nước suối", 1.0);
+
+        Table table1 = new Table();
+        table1.addItem(coffee);
+        table1.addItem(tea);
+
+        Table table2 = new Table();
+        table2.addItem(water);
+        table2.addItem(tea);
+
+        System.out.println("Tổng tiền bàn 1: " + table1.getPrice());
+        System.out.println("Tổng tiền bàn 2: " + table2.getPrice());
 
 
     }
